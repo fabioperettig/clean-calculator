@@ -1,0 +1,125 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Baloo Tammudu 2', cursive;
+    font-weight: bold;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(120deg, #fffbd5, #b20a2c);
+}
+
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 60px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 60px);
+}
+
+.calculator-grid > button {
+    color: rgb(255, 255, 255);
+    align-items: center;
+    justify-content: center;
+    padding-top: .5rem;
+    cursor: pointer;
+    font-size: 1.25rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .5);
+    transition: all 1s ease;
+    overflow: hidden;
+}
+
+.calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.span-two {
+    grid-column: span 2;
+}
+
+.output {
+    grid-column: 1/-1;
+    background-color: rgba(0, 0, 0, .3);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 1rem 1rem 0 0;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.output .previous-operand{
+    color: rgba(255, 255, 255, .6);
+    font-size: 1rem;
+}
+
+.output .current-operand{
+    color: rgba(255, 255, 255, 1);
+    font-size: 2.5rem;
+    margin-bottom: -2rem;
+    padding-left: .5rem;
+}
+
+span {
+    display: grid;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    margin-top: -1.7rem;
+    margin-left: 1.5rem;
+    background: #fff;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border-radius: 50%;
+    animation: animate 1s linear infinite;
+    overflow: hidden;
+}
+
+.span-two span{
+    margin-top: -1.8rem;
+    margin-left: 3.3rem;
+}
+
+@keyframes animate{
+    0%{
+        width: 0px;
+        height: 0px;
+        opacity: .7;
+    }
+    100%{
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+    }
+}
+
+/* wiggle effect
+
+.calculator-grid > button:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds 
+    animation: shake 3s ease;
+
+  
+    /* When the animation is finished, start again 
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes shake {
+    0% { transform: translate(.5px, .5px) rotate(0deg); }
+    10% { transform: translate(-.15px, -.25px) rotate(-1deg); }
+    20% { transform: translate(-.7px, 0px) rotate(1deg); }
+    30% { transform: translate(0px, 1px) rotate(0deg); }
+    40% { transform: translate(1px, -.65px) rotate(1deg); }
+    50% { transform: translate(-1px, .45px) rotate(-1deg); }
+    60% { transform: translate(-.3px, 1px) rotate(0deg); }
+    70% { transform: translate(.3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, .2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+  /*
